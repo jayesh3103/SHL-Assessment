@@ -1,5 +1,11 @@
 # SHL Conversational Assessment Recommender
 
+🚀 **Live API Endpoint**: [https://shl-assessment-3phb.onrender.com](https://shl-assessment-3phb.onrender.com)
+
+You can easily interact with the live deployed service using these endpoints:
+- **Interactive Swagger UI**: Go to [`/docs`](https://shl-assessment-3phb.onrender.com/docs) to manually test the `POST /chat` endpoint in your browser.
+- **Health Check**: Go to [`/health`](https://shl-assessment-3phb.onrender.com/health) to verify the service is running.
+
 This repository contains the solution for the AI Intern Take-home Assignment. The project implements a Conversational Agent using FastAPI and Google Gemini that guides a user from a vague intent to a grounded shortlist of SHL assessments.
 
 ## Features
