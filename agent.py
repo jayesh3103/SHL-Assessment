@@ -58,7 +58,16 @@ Extract search keywords if intent is search or compare. Include job levels, skil
         )
         # Parse the JSON string into our Pydantic model
         result_json = json.loads(response.text)
-        return SearchQuery(**result_json)
+        extracted = SearchQuery(**result_json)
+        
+        # Turn guard: Force a search if the conversation is getting too long (e.g. >= 12 messages / 6 turns)
+        if len(messages) >= 12 and extracted.intent == 'clarify':
+            extracted.intent = 'search'
+            # Default to a broad keyword if none was extracted
+            if not extracted.search_keywords:
+                extracted.search_keywords = messages[-1]['content']
+                
+        return extracted
     except Exception as e:
         print(f"Extraction error: {e}")
         # Fallback
